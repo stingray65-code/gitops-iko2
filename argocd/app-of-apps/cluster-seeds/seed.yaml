@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: argocd/app-of-apps/charts/iris-cluster-collection
-    repoURL: https://github.com/your_git_account_here/gitops-iko2.git 
+    repoURL: https://github.com/stingray65-code/gitops-iko2.git 
     targetRevision: main
   syncPolicy:
     automated: {}
