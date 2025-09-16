@@ -1,0 +1,24 @@
+metadata:
+  name: iris-sys-storage
+  labels: local
+spec:
+  storageClassName: manual
+  capacity:
+      storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+      path: "/storage/iris"
+---
+apiVersion: argoproj.io/v1alpha1
+kind: persistentVolumeClaim
+metadata:
+  name: iris-pvc
+spec:
+ storageClassName: manual
+ capacity:
+   storage: 1Gi
+   accessModes:
+   - ReadWriteOnce
+   resources:
+   requests:

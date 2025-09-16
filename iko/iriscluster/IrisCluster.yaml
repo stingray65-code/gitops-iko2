@@ -1,0 +1,42 @@
+apiVersion: intersystems.com/v1alpha1
+kind: IrisCluster
+metadata:
+  name: simple
+spec:
+  licenseKeySecret:
+    #; to activate ISC license key
+    name: iris-key-secret
+  configSource:
+    #; contains CSP-merge.ini, which is merged into IKO's
+    #; auto-generated configuration.
+    name: iris-cpf
+  imagePullSecrets:
+    - name: intersystems-pull-secret
+
+  topology:
+    data:
+      image: containers.intersystems.com/intersystems/irishealth-community:2024.3
+      ##compatibilityVersion: "2023.3"
+      compatibilityVersion: "2024.2.0"
+    webgateway:
+      replicas: 1
+      image: containers.intersystems.com/intersystems/webgateway:2024.3
+      applicationPaths:
+        #; All of the IRIS instance's system default applications.
+        #; For Management Portal only, just use '/csp/sys'.
+        #; To support other applications, please add them to this list.
+        - /csp/sys
+        - /csp/broker
+        - /api
+        - /isc
+        - /oauth2
+        - /ui
+        - /csp/healthshare
+      alternativeServers: LoadBalancing
+      loginSecret:
+        name: iris-webgateway-secret
+
+  serviceTemplate:
+    # ; to enable external IP addresses
+    spec:
+      type: LoadBalancer
