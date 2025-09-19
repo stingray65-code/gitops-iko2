@@ -12,19 +12,6 @@ spec:
         path: iko/iris_operator_amd-3.8.42.100/samples
         repoURL: {{ .Values.repoURL }}
         targetRevision: {{ .Values.targetRevision }}
-      containers:
-      - name: iris
-        ##image: containers.intersystems.com/intersystems/iris-community:2024.3
-        env:
-        - name: ISC_DATA_DIRECTORY
-          value: /storage/iris
-        volumeMounts:
-        - name: iris-sys-storage
-        mountPath: /storage/iris
-      volumeMounts:
-      - name: iris-sys-storage
-      persistentVolumeClaim:
-        claimName: iris-pvc
       syncPolicy:
         automated: {}
         syncOptions:
