@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
    name: iris-sys-storage
 spec:
-  storageClassName: longhorn  
+  storageClassName: longhorn-storageclass  
   accessModes:
     - ReadWriteOnce
   resources:
