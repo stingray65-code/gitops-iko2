@@ -1,26 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Deployment
+kind: PersistentVolumeClaim
 metadata:
-  name: iris-sys-storage
-  labels: local
+   name: iris-sys-storage
 spec:
-  storageClassName: manual
-  capacity:
-      storage: 1Gi
+  storageClassName: longhorn  
   accessModes:
     - ReadWriteOnce
-  hostPath:
-      path: "/storage/iris"
----
-apiVersion: argoproj.io/v1alpha1
-kind: persistentVolumeClaim
-metadata:
-  name: iris-pvc
-spec:
- storageClassName: manual
- capacity:
-   storage: 1Gi
-   accessModes:
-   - ReadWriteOnce
-   resources:
-   requests:
+  resources:
+    requests:
+      storage: 1Gi
+
