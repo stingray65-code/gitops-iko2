@@ -12,7 +12,7 @@ spec:
     name: iris-cpf
   imagePullSecrets:
     - name: intersystems-pull-secret
-  storageClassName: longhorn-storageclass
+  storageClassName: longhorn-storage
   topology:
     data:
       image: containers.intersystems.com/intersystems/irishealth-community:2024.3
