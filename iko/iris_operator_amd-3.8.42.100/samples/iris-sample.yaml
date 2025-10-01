@@ -9,6 +9,7 @@ spec:
     data:
       image: containers.intersystems.com/intersystems/iris-community:2024.3
       compatibilityVersion: "2024.3.0"
+  storageClassName: longhorn-storage
   serviceTemplate:
     spec:
       type: LoadBalancer
